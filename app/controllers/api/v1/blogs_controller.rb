@@ -13,7 +13,6 @@ module Api
 
       def index 
         blogs = Blog.all 
-
         payload = {
           blogs: BlogBlueprint.render_as_hash(blogs),
           status: 200
@@ -46,7 +45,6 @@ module Api
         blog.destroy 
         render_success(payload: "Blog has been destroyed!", status: 200)
       end
-
     end
   end
 end
