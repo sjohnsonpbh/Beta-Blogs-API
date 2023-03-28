@@ -1,6 +1,8 @@
 module Api 
   module V1 
     class BlogsController < Api::V1::ApplicationController 
+            skip_before_action :authenticate, only: %i[home show]
+
       def create
         result = Blogs::Operations.new_blog(params, @current_user)
         render_error(errors: result.errors.all, status: 400) and return unless result.success?
@@ -44,6 +46,10 @@ module Api
         blog = Blog.find(params[:id])
         blog.destroy 
         render_success(payload: "Blog has been destroyed!", status: 200)
+      end
+
+      def home 
+        render_success(payload: {suggested: BlogBlueprint.render_as_hash(Blog.order("Random()").limit(5)), categories: Category.all})
       end
     end
   end
