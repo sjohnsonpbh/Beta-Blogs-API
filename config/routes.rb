@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         get :home
       end
       resources :blogs
+      resources :categories
     end
   end
 end
