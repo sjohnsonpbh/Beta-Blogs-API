@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.2.0'
 
 # ================== The BASICS ========================
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
